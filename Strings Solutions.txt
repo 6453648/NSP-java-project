@@ -1,0 +1,122 @@
+String is palindrome or not
+// Return true if the string is palindrome, else return false
+bool isPalindrome(string str){
+  // Write your code here
+  for(int i=0; i<str.length()/2; i++){
+    if(str[i]!=str[str.length()-1-i])
+      return false;
+  }
+  return true;
+}
+
+
+
+
+
+
+
+
+
+Count Words
+int countWords(char str[]) 
+{
+  int count=0;
+  for(int i=0; str[i]!='\0'; i++){
+    if(str[i]==' ' && str[i+1]!=' ')
+      count++;
+  }
+  if(str[0]=='\0')
+    return 0;
+  return count+1;
+}
+
+
+
+
+
+
+
+
+
+String is pangram or not
+/*     
+ * Complete the 'isPangrams' function below.
+ * @params
+ *  strings -> a vector of strings which is to be tested
+ *
+ * @return
+ *  A string consisting of '1' and '0' where each position represents the results of that test. 
+ *  Use a '1' to represent true, '0' for false.
+ */
+string isPangram(vector<string> &strings){
+  // Write your code here
+  string s="";
+  for(int k=0; k<strings.size(); k++){
+    int arr[26];
+    for(int i=0; i<26; i++)
+      arr[i]=0;
+    for(int i=0; i<strings[k].length(); i++)
+      arr[strings[k][i]-'a']=1;
+    
+    
+    int ans = 1;
+    for(int i=0; i<26; i++)
+      if(arr[i]==0){
+        ans=0;
+        break;
+      }
+    s+=to_string(ans);
+  }
+  
+  return s;
+}
+
+
+
+
+
+
+
+
+Vowel Substrings
+int countVowelSubstr(string str){
+  // Write your code here
+  long long ans=0;
+  for(int i=0; i<str.length(); i++){
+    if(str[i]=='a'||str[i]=='e'||str[i]=='i'||str[i]=='o'||str[i]=='u'||str[i]=='A'||str[i]=='E'||str[i]=='I'||str[i]=='O'||str[i]=='U'){
+		ans+=str.length()-i;      
+    }
+  }
+  return ans%10007;
+}
+
+
+
+
+
+
+
+
+Strings are anagram or not
+int isAnagram(string str1, string str2){
+	// Write your code here
+  	int arr1[100], arr2[100];
+    for(int i=0; i<100; i++){
+      arr1[i]=0;
+	  arr2[i]=0;      
+    }
+    for(int i=0; i<str1.length(); i++)
+      arr1[str1[i]-'A']++;
+    for(int i=0; i<str2.length(); i++)
+      arr2[str2[i]-'A']++;
+  
+  	int ans = 1;
+  	for(int i=0; i<100; i++){
+      if(arr1[i]!=arr2[i]){
+        ans=0;
+        break;
+      }  
+    }
+  return ans;
+  
+}
